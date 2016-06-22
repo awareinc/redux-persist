@@ -132,13 +132,14 @@ function createStorageKey (key) {
 
 function defaultSerialize (data) {
   return stringify(data, null, null, (k, v) => {
-    if (process.env.NODE_ENV !== 'production') return null
-    throw new Error(`
-      redux-persist: cannot process cyclical state.
-      Consider changing your state structure to have no cycles.
-      Alternatively blacklist the corresponding reducer key.
-      Cycle encounted at key "${k}" with value "${v}".
-    `)
+    return null
+    // if (process.env.NODE_ENV !== 'production') return null
+    // throw new Error(`
+    //   redux-persist: cannot process cyclical state.
+    //   Consider changing your state structure to have no cycles.
+    //   Alternatively blacklist the corresponding reducer key.
+    //   Cycle encounted at key "${k}" with value "${v}".
+    // `)
   })
 }
 
